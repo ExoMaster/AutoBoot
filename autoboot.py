@@ -105,7 +105,7 @@ while run:
 		logger.addHandler(file_handler)
 
 	for comment in subreddit.stream.comments():
-		if ( find_word("boots")(comment.body) or find_word("boot")(comment.body) or find_word("b o o t s")(comment.body) ) and comment.created_utc >= bot_start_time and comment.subreddit.display_name.lower() not in bans["disallowed"]:
+		if ( find_word("boots")(comment.body) or find_word("boot")(comment.body) or find_word("b o o t s")(comment.body) ) and comment.created_utc >= bot_start_time and comment.subreddit.display_name.lower() not in bans["disallowed"] and comment.subreddit.display_name.lower() not in bans["permission"] and comment.subreddit.display_name.lower() not in bans["posts-only"]:
 			comment.reply(construct_reply("#***W H E E Z E***"))
 			logger.info("Replying to user " + comment.author.name + " on subreddit " + comment.subreddit.display_name)
 
