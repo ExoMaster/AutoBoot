@@ -84,6 +84,7 @@ reddit = praw_login(config)
 
 bottiquette = reddit.subreddit("bottiquette").wiki["robots_txt_json"]
 bans = json.loads(bottiquette.content_md)
+bans["disallowed"].append("boottoobig")
 
 logger.info("Authenticated as Reddit user " + praw.models.User(reddit).me().name + ".")
 
